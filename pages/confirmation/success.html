@@ -130,6 +130,24 @@
     <link rel="stylesheet" href="../../assets/css/responsive.css" />
     <link rel="stylesheet" href="../../assets/css/main.css" />
   </head>
+         <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const reference = sessionStorage.getItem("ncic-reference");
+
+    const output = document.getElementById("issuedReference");
+
+    if (output) {
+
+        output.textContent = reference || "Unavailable";
+
+    }
+
+    // Optional:
+    // sessionStorage.removeItem("ncic-reference");
+
+});
+</script>
   <body>
   <!-- =========================================================
          SKIP LINK
