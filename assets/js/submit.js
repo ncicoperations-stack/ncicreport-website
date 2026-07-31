@@ -58,16 +58,17 @@
 
             const payload = buildPayload(form);
 
-            const response = await fetch(
-                window.NCIC_CONFIG.api.endpoint,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(payload)
-                }
-            );
+           const body = new URLSearchParams({
+    payload: JSON.stringify(payload)
+});
+
+const response = await fetch(
+    window.NCIC_CONFIG.api.endpoint,
+    {
+        method: "POST",
+        body
+    }
+);
 
             if (!response.ok) {
                 throw new Error(
