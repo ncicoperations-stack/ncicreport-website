@@ -1,72 +1,59 @@
 document.addEventListener("submit", async (event) => {
+  const form = event.target;
 
-  if (!event.target.matches(".report-form")) return;
+  if (!form.matches(".report-form")) {
+    return;
+  }
 
   event.preventDefault();
 
-  if (!window.validateRequired(event.target)) {
+  if (!window.validateRequired(form)) {
     alert("Please complete all required fields.");
     return;
   }
 
-  const form = event.target;
-
   const formData = new FormData(form);
 
-  const data = {};
+  const payload = {};
 
   formData.forEach((value, key) => {
-    data[key] = value;
+    payload[key] = value;
   });
 
-  // Get report type from the form or page
-  data.reportType =
+  payload.reportType =
     form.dataset.reportType ||
     document.body.dataset.reportType ||
     "other";
 
-  // Optional: collect category-specific fields
-  data.categoryData = data.categoryData || {};
-
   try {
-
     const response = await fetch(window.NCIC_CONFIG.api.endpoint, {
-
       method: "POST",
-
       headers: {
         "Content-Type": "application/json"
       },
-
-      body: JSON.stringify(data)
-
+      body: JSON.stringify(payload)
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
 
     const result = await response.json();
 
     if (!result.success) {
-
-      alert(result.message || "Submission failed.");
-
-      return;
-
+      throw new Error(result.message || "Submission failed.");
     }
 
-    sessionStorage.setItem(
-      "ncic-reference",
-      result.reference
-    );
+    sessionStorage.setItem("ncic-reference", result.reference);
 
-    location.href = "../confirmation/success.html";
+    window.location.href = "../confirmation/success.html";
 
-  } catch (err) {
+  } catch (error) {
 
-    console.error(err);
+    console.error("Submission Error:", error);
 
     alert(
-      "Unable to submit your report.\nPlease try again."
+      "We couldn't submit your report at this time.\n\nPlease try again in a few moments."
     );
-
   }
-
 });
