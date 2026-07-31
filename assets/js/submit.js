@@ -2,15 +2,16 @@
  * ============================================================
  * NCIC Report Submission
  * File: submit.js
- * Version: 3.0
+ * Version: 4.0
  *
  * Handles:
  * • Final validation
  * • Collect form data
- * • Submit to Google Apps Script
  * • Prevent duplicate submissions
- * • Display submission errors
- * • Store returned reference number
+ * • Submit to Google Apps Script
+ * • Store reference number
+ * • Redirect on success
+ * • Display friendly errors
  * ============================================================
  */
 
@@ -20,7 +21,9 @@
 
     let submitting = false;
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", initializeSubmission);
+
+    function initializeSubmission() {
 
         const form = document.querySelector(".report-form");
 
@@ -30,7 +33,7 @@
 
         form.addEventListener("submit", submitReport);
 
-    });
+    }
 
     async function submitReport(event) {
 
@@ -42,7 +45,10 @@
 
         const form = event.target;
 
-        // Final validation
+        // --------------------------------------------------------
+        // Final Validation
+        // --------------------------------------------------------
+
         if (
             typeof window.validateCurrentStep === "function" &&
             !window.validateCurrentStep(3)
@@ -58,54 +64,96 @@
 
             const payload = buildPayload(form);
 
-           const body = new URLSearchParams({
-    payload: JSON.stringify(payload)
-});
+            const body = new URLSearchParams({
 
-const response = await fetch(
-    window.NCIC_CONFIG.api.endpoint,
-    {
-        method: "POST",
-        body
-    }
-);
+                payload: JSON.stringify(payload)
+
+            });
+
+            const response = await fetch(
+
+                window.NCIC_CONFIG.api.endpoint,
+
+                {
+
+                    method: "POST",
+
+                    body: body
+
+                }
+
+            );
 
             if (!response.ok) {
+
                 throw new Error(
+
                     `HTTP ${response.status}`
+
                 );
+
             }
 
             const result = await response.json();
 
             if (!result.success) {
+
                 throw new Error(
+
                     result.message ||
                     "Submission failed."
+
                 );
+
             }
 
             sessionStorage.setItem(
+
                 "ncic-reference",
+
                 result.reference
+
+            );
+
+            localStorage.removeItem(
+
+                window.NCIC_CONFIG.storageKey
+
             );
 
             window.location.href =
                 "/pages/confirmation/success.html";
 
         }
+
         catch (error) {
 
             console.error(
+
                 "NCIC Submission Error:",
+
                 error
+
             );
 
-            alert(
-                "Unable to submit your report.\n\nPlease try again."
-            );
+            let message =
+                "Unable to submit your report.";
+
+            if (
+
+                error.message.includes("HTTP")
+
+            ) {
+
+                message =
+                    "The reporting service is currently unavailable.\n\nPlease try again in a few minutes.";
+
+            }
+
+            alert(message);
 
         }
+
         finally {
 
             submitting = false;
@@ -115,6 +163,10 @@ const response = await fetch(
         }
 
     }
+
+    /************************************************************
+     * BUILD PAYLOAD
+     ************************************************************/
 
     function buildPayload(form) {
 
@@ -127,7 +179,13 @@ const response = await fetch(
             if (payload[key]) {
 
                 if (!Array.isArray(payload[key])) {
-                    payload[key] = [payload[key]];
+
+                    payload[key] = [
+
+                        payload[key]
+
+                    ];
+
                 }
 
                 payload[key].push(value);
@@ -154,21 +212,29 @@ const response = await fetch(
 
     }
 
+    /************************************************************
+     * SUBMIT BUTTON
+     ************************************************************/
+
     function toggleSubmitButton(disabled) {
 
         const button = document.querySelector(
+
             'button[type="submit"]'
+
         );
 
         if (!button) {
+
             return;
+
         }
 
         button.disabled = disabled;
 
         if (disabled) {
 
-            button.dataset.original =
+            button.dataset.originalText =
                 button.textContent;
 
             button.textContent =
@@ -178,7 +244,7 @@ const response = await fetch(
         else {
 
             button.textContent =
-                button.dataset.original ||
+                button.dataset.originalText ||
                 "Submit Report";
 
         }
