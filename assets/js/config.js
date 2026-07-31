@@ -1,11 +1,17 @@
 window.NCIC_CONFIG = {
+
     siteName: "National Cyber Intelligence Center",
+
     reportPrefix: "NCIC",
+
     storageKey: "ncic-draft-report",
 
-    api: {
-        endpoint: "https://script.google.com/macros/s/AKfycbyIQpZzSCn9V_syHqvOlkXPnuzCA1YDxZjgMgp2pFaoCYbMHC3fiayv8QhgGKe3LqlK/exec"
-    },
+    debug: true,
 
-    debug: true
+    api: {
+
+        endpoint: "https://script.google.com/macros/s/AKfycbx_Z0C7Z908AlsHcBYkAsMFac-ZEQGr8-vpAid-I-DT25EUdZSMcTyZJECoU_yY0eDP/exec"
+
+    }
+
 };
