@@ -83,3 +83,6 @@ window.REPORT_CONFIG = {
     ]
   }
 };
+window.getReportConfig = function (reportType) {
+    return window.REPORT_CONFIG[reportType] || null;
+};
