@@ -1,0 +1,8 @@
+{
+  "name": "National Cyber Intelligence Center",
+  "short_name": "NCIC",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f6f8fb",
+  "theme_color": "#0b2d5c"
+}

@@ -1,0 +1,171 @@
+/* ==========================
+   GOVERNMENT ALERT
+========================== */
+
+.gov-alert-bar {
+  background: #f2f2f2;
+  color: #111;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 0;
+}
+
+.gov-alert-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 42px;
+}
+
+.gov-alert-left,
+.gov-alert-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.gov-alert-left {
+  color: #1a1a1a;
+}
+
+.gov-alert-right {
+  color: #333333;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--white);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 82px;
+  padding: 1rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+}
+
+.logo-image {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-text strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.logo-text span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navigation a,
+.dropdown-toggle {
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navigation a:hover,
+.dropdown-toggle:hover {
+  color: var(--blue);
+}
+
+.has-dropdown {
+  position: relative;
+}
+.has-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  display: none;
+  min-width: 280px;
+
+  padding: 0.75rem 0;
+
+  background: var(--white);
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+  z-index: 1000;
+}
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+  display: block;
+
+  padding: 0.8rem 1.25rem;
+
+  color: var(--ink);
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #f4f7fb;
+  color: var(--blue);
+}
+.has-dropdown:hover .dropdown-menu {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.menu-toggle {
+  display: none;
+}

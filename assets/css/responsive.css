@@ -1,0 +1,40 @@
+@media (max-width: 850px) {
+  .hero-container,
+  .lookup-wrapper,
+  .report-layout,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navigation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .navigation.is-open {
+    display: flex;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+  }
+  .lookup-form {
+    flex-direction: column;
+  }
+  .gov-alert-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,18 @@
+.page-hero {
+  padding: 4rem 0;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--blue), #123f78);
+}
+.page-hero p {
+  max-width: 760px;
+  color: #e0ebf7;
+}
+.notice {
+  padding: 1rem;
+  background: #fff8e5;
+  border-left: 5px solid var(--gold);
+  border-radius: 12px;
+}
+.muted {
+  color: var(--muted);
+}

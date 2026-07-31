@@ -1,0 +1,30 @@
+.site-footer {
+  padding: 4rem 0 2rem;
+  color: var(--white);
+  background: #071f40;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 2rem;
+}
+.footer-column a {
+  color: #dbe8f6;
+  text-decoration: none;
+}
+.footer-bottom {
+  padding-top: 1rem;
+  margin-top: 2rem;
+  color: #c7d6e6;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+/* ==========================
+   FOOTER LOGO
+========================== */
+
+.footer-logo {
+  display: block;
+  width: 200px;
+  height: auto;
+  margin-bottom: 1.25rem;
+}

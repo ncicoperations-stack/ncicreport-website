@@ -1,0 +1,69 @@
+.lookup-wrapper,
+.report-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.lookup-form {
+  display: flex;
+  gap: 0.75rem;
+}
+label {
+  font-weight: 800;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+textarea {
+  min-height: 130px;
+}
+.form-card {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+/* ==========================================================
+   Checkbox Group
+========================================================== */
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    margin-top: 2rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-group label {
+    flex: 1;
+    margin: 0;
+    line-height: 1.6;
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+.action-card,
+.category-card,
+.resource-card {
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.action-card:hover,
+.category-card:hover,
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}

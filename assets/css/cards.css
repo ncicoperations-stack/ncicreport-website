@@ -1,0 +1,58 @@
+.quick-actions-grid,
+.statistics-grid,
+.categories-grid,
+.why-report-grid,
+.resource-grid,
+.faq-grid,
+.alerts-grid,
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+}
+
+.action-card,
+.stat-card,
+.category-card,
+.info-card,
+.resource-card,
+.faq-card,
+.alert-card,
+.content-card {
+  padding: 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(16, 32, 51, 0.06);
+  text-decoration: none;
+}
+
+.action-icon {
+  font-size: 2rem;
+}
+.stat-card h3 {
+  color: var(--blue);
+  font-size: 2rem;
+}
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--white);
+  border-radius: var(--radius);
+}
+.timeline-number {
+  display: grid;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--white);
+  background: var(--blue);
+  border-radius: 50%;
+  font-weight: 800;
+}

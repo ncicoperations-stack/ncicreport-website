@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-07-01",
+    "title": "Impersonation payment requests",
+    "summary": "Verify urgent payment requests through a trusted channel before sending funds."
+  },
+  {
+    "date": "2026-06-15",
+    "title": "Account recovery phishing",
+    "summary": "Do not enter credentials from links in unexpected password reset messages."
+  },
+  {
+    "date": "2026-05-20",
+    "title": "Investment scam warnings",
+    "summary": "Research platforms and avoid guaranteed-return promises or pressure tactics."
+  }
+]
