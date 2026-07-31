@@ -96,6 +96,9 @@
 
             const result = await response.json();
 
+console.log("API Response:", result);
+console.log("Reference:", result.reference);
+
             if (!result.success) {
 
                 throw new Error(
