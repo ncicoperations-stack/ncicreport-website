@@ -10,7 +10,7 @@ window.NCIC_CONFIG = {
 
     api: {
 
-        endpoint: "https://script.google.com/macros/s/AKfycbx_Z0C7Z908AlsHcBYkAsMFac-ZEQGr8-vpAid-I-DT25EUdZSMcTyZJECoU_yY0eDP/exec"
+        endpoint: "https://script.google.com/macros/s/AKfycbx3XmkivmXib8FOXk5EAsnmtfg2qzTGM01WxObBKZxIXJ8wkttxXJQt_eHPCXpAF_Ni/exec"
 
     }
 
