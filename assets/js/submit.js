@@ -46,8 +46,7 @@ document.addEventListener("submit", async (event) => {
 
     sessionStorage.setItem("ncic-reference", result.reference);
 
-    window.location.href = "../confirmation/success.html";
-
+    window.location.href = "/pages/confirmation/success.html";
   } catch (error) {
 
     console.error("Submission Error:", error);
